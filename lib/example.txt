@@ -1,0 +1,245 @@
+http://guitarix.sourceforge.net/plugins/gx_amp#GUITARIX
+
+	Name:              GxAmplifier-X
+	Class:             Simulator
+	Author:            Guitarix team
+	Author Email:      mailto:brummer@web.de
+	Has latency:       no
+	Bundle:            file:///usr/lib/lv2/gx_amp.lv2/
+	Binary:            file:///usr/lib/lv2/gx_amp.lv2/gx_amp.so
+	UIs:
+		http://guitarix.sourceforge.net/plugins/gx_amp#gui
+			Class:  http://lv2plug.in/ns/extensions/ui#GtkUI
+			Binary: file:///usr/lib/lv2/gx_amp.lv2/gx_amp_gui.so
+			Bundle: file:///usr/lib/lv2/gx_amp.lv2/
+	Data URIs:         file:///usr/lib/lv2/gx_amp.lv2/manifest.ttl
+	                   file:///usr/lib/lv2/gx_amp.lv2/gx_amp.ttl
+	Required Features: http://lv2plug.in/ns/ext/urid#map
+	                   http://lv2plug.in/ns/ext/worker#schedule
+	                   http://lv2plug.in/ns/ext/buf-size#boundedBlockLength
+	Optional Features: http://lv2plug.in/ns/lv2core#hardRTCapable
+	Extension Data:    http://lv2plug.in/ns/ext/worker#interface
+	Presets: 
+
+	Port 0:
+		Type:        http://lv2plug.in/ns/lv2core#InputPort
+		             http://lv2plug.in/ns/lv2core#ControlPort
+		Symbol:      MasterGain
+		Name:        MasterGain
+		Minimum:     -20.000000
+		Maximum:     20.000000
+		Default:     -15.000000
+
+	Port 1:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      PreGain
+		Name:        PreGain
+		Minimum:     -20.000000
+		Maximum:     20.000000
+		Default:     0.000000
+
+	Port 2:
+		Type:        http://lv2plug.in/ns/lv2core#InputPort
+		             http://lv2plug.in/ns/lv2core#ControlPort
+		Symbol:      Distortion
+		Name:        Distortion
+		Minimum:     1.000000
+		Maximum:     100.000000
+		Default:     20.000000
+
+	Port 3:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Drive
+		Name:        Drive
+		Minimum:     0.010000
+		Maximum:     1.000000
+		Default:     0.250000
+
+	Port 4:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Middle
+		Name:        Middle
+		Minimum:     0.000000
+		Maximum:     1.000000
+		Default:     0.500000
+
+	Port 5:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Bass
+		Name:        Bass
+		Minimum:     0.000000
+		Maximum:     1.000000
+		Default:     0.500000
+
+	Port 6:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Treble
+		Name:        Treble
+		Minimum:     0.000000
+		Maximum:     1.000000
+		Default:     0.500000
+
+	Port 7:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Cabinet
+		Name:        Cabinet
+		Minimum:     1.000000
+		Maximum:     20.000000
+		Default:     10.000000
+
+	Port 8:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      Presence
+		Name:        Presence
+		Minimum:     1.000000
+		Maximum:     10.000000
+		Default:     5.000000
+
+	Port 9:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Scale Points:
+			0 = "12ax7"
+			1 = "12AU7"
+			2 = "12AT7"
+			3 = "6DJ8"
+			4 = "6C16"
+			5 = "6V6"
+			6 = "12ax7 feedback"
+			7 = "12AU7 feedback"
+			8 = "12AT7 feedback"
+			9 = "6DJ8 feedback"
+			10 = "pre 12ax7/ master 6V6"
+			11 = "pre 12AU7/ master 6V6"
+			12 = "pre 12AT7/ master 6V6"
+			13 = "pre 6DJ8/ master 6V6"
+			14 = "pre 12ax7/ push-pull 6V6"
+			15 = "pre 12AU7/ push-pull 6V6"
+			16 = "pre 12AT7/ push pull 6V6"
+			17 = "pre 6DJ8/ push-pull 6V6"
+
+		Symbol:      model
+		Name:        Model
+		Minimum:     0.000000
+		Maximum:     17.000000
+		Default:     0.000000
+		Properties:  http://lv2plug.in/ns/lv2core#enumeration
+		             http://lv2plug.in/ns/lv2core#integer
+
+
+	Port 10:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Scale Points:
+			15 = "Roland"
+			17 = "Rev.Rocket"
+			16 = "Ampeg"
+			11 = "JTM-45"
+			14 = "Ibanez"
+			12 = "AC-15"
+			13 = "Peavey"
+			0 = "default"
+			10 = "SOL 100"
+			8 = "AC-30"
+			9 = "Mesa Boogie"
+			1 = "Bassman"
+			7 = "M2199"
+			5 = "JCM-2000"
+			6 = "M-Lead"
+			2 = "Twin Reverb"
+			3 = "Princeton"
+			4 = "JCM-800"
+			18 = "MIG 100 H"
+			19 = "Triple Giant"
+			20 = "Trio Preamp"
+			21 = "Hughes&Kettner"
+			22 = "Fender Junior"
+			23 = "Fender"
+			24 = "Fender Deville"
+			25 = "Gibsen"
+			26 = "Off"
+
+		Symbol:      t_model
+		Name:        Tonestack Model
+		Minimum:     0.000000
+		Maximum:     26.000000
+		Default:     1.000000
+		Properties:  http://lv2plug.in/ns/lv2core#enumeration
+		             http://lv2plug.in/ns/lv2core#integer
+
+
+	Port 11:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Scale Points:
+			16 = "Charisma"
+			17 = "1x8"
+			18 = "Off"
+			0 = "4x12"
+			15 = "Vitalize"
+			13 = "Mesa"
+			14 = "Briliant"
+			9 = "AC30"
+			12 = "1x15"
+			10 = "Princeton"
+			11 = "A2"
+			1 = "2x12"
+			8 = "Marshall"
+			6 = "Twin"
+			7 = "Bassman"
+			2 = "1x12"
+			5 = "HighGain"
+			3 = "4x10"
+			4 = "2x10"
+
+		Symbol:      c_model
+		Name:        Cab Model
+		Minimum:     0.000000
+		Maximum:     18.000000
+		Default:     0.000000
+		Properties:  http://lv2plug.in/ns/lv2core#enumeration
+		             http://lv2plug.in/ns/lv2core#integer
+
+
+	Port 12:
+		Type:        http://lv2plug.in/ns/ext/atom#AtomPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      control
+		Name:        Control
+
+	Port 13:
+		Type:        http://lv2plug.in/ns/ext/atom#AtomPort
+		             http://lv2plug.in/ns/lv2core#OutputPort
+		Symbol:      notify
+		Name:        Notify
+
+	Port 14:
+		Type:        http://lv2plug.in/ns/lv2core#ControlPort
+		             http://lv2plug.in/ns/lv2core#OutputPort
+		Symbol:      SCHEDULE
+		Name:        SCHEDULE
+		Minimum:     0.000000
+		Maximum:     1.000000
+		Default:     1.000000
+		Properties:  http://lv2plug.in/ns/lv2core#notOnGUI
+		             http://lv2plug.in/ns/lv2core#integer
+
+
+	Port 15:
+		Type:        http://lv2plug.in/ns/lv2core#AudioPort
+		             http://lv2plug.in/ns/lv2core#OutputPort
+		Symbol:      out
+		Name:        Out
+
+	Port 16:
+		Type:        http://lv2plug.in/ns/lv2core#AudioPort
+		             http://lv2plug.in/ns/lv2core#InputPort
+		Symbol:      in
+		Name:        in
