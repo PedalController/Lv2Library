@@ -1,8 +1,11 @@
 package br.com.srmourasilva.lv2library;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,22 +28,40 @@ class Lv2Mapper {
 	 * calling node lib/index.js for
 	 * generate all the .json plugins
 	 */
-	public void map() {
+	public void map() throws MappingException  {
 		Runtime r = Runtime.getRuntime();
-		//StringBuilder builder = new StringBuilder();
+		Process process = null;
 
 		try {
-			Process process = r.exec("node "+LIB_FOLDER+"index.js");
+			process = r.exec("node "+LIB_FOLDER+"index.js");
 			process.waitFor();
 
-			/* // NOT NECCESSARY
-			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			reader.lines().forEach(line -> builder.append(line));
-			reader.close();
-			 */
+			//System.out.println(getStringOf(process.getInputStream()));
+			//System.out.println(getStringOf(process.getOutputStream()));
 		} catch (InterruptedException | IOException e) {
-			e.printStackTrace();
+			throw new MappingException(e);
 		}
+
+		try {
+			String error = getStringOf(process.getErrorStream());
+			if (isError(error))
+				throw new MappingException(error.trim());
+		} catch (IOException e) {
+			throw new MappingException(e);
+		}
+	}
+	
+	private boolean isError(String error) throws IOException {
+		return error.contains("Error");
+	}
+
+	private String getStringOf(InputStream stream) throws IOException {
+		StringBuilder builder = new StringBuilder();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+		reader.lines().forEach(line -> builder.append(line));
+		reader.close();
+
+		return builder.toString();
 	}
 	
 	public List<Lv2Plugin> all() {

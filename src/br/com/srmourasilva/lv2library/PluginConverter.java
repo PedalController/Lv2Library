@@ -6,9 +6,10 @@ import com.eclipsesource.json.JsonObject.Member;
 class PluginConverter {
 
 	public Lv2Plugin convert(JsonObject json) {
-		Lv2Plugin plugin = new Lv2Plugin("teste");
+		String uri = json.get("uri").asString();
+		Lv2Plugin plugin = new Lv2Plugin(uri);
 
-		for (Member member : json) {
+		for (Member member : json.get("params").asObject()) {
 			Lv2Param param = new Lv2Param(member.getName());
 
 			JsonObject values = member.getValue().asObject();

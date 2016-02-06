@@ -21,10 +21,12 @@ public class Lv2Library {
 	
 	private Lv2Library() {
 		plugins = new ArrayList<>();
-		initializate();
 	}
 	
-	private void initializate() {
+	/**
+	 * Find all plugins installed in your pc 
+	 */
+	public void initializate() throws MappingException {
 		Lv2Mapper mapper = new Lv2Mapper();
 		mapper.map();
 		this.plugins = mapper.all();
