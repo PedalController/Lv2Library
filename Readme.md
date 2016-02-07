@@ -15,7 +15,7 @@ sudo apt-get install --yes nodejs
 
 ## Usage
 
-```
+```java
 Lv2Library myLib = Lv2Library.getInstance();
 // Find lv2plugins (and generate json matching)
 myLib.initializate();
