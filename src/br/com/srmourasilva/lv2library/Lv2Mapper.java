@@ -34,7 +34,9 @@ class Lv2Mapper {
 
 		try {
 			process = r.exec("node "+LIB_FOLDER+"index.js");
-			process.waitFor();
+			//it's legen
+			process.waitFor(); //it
+			//dary!
 
 			//System.out.println(getStringOf(process.getInputStream()));
 			//System.out.println(getStringOf(process.getOutputStream()));
