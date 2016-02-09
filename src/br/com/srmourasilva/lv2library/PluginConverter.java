@@ -29,7 +29,8 @@ class PluginConverter {
 		if (port.getTypes().contains(Lv2PortType.ControlPort.getType())) {
 			port.setMin(Float.parseFloat(values.getString("Minimum", "")));
 			port.setMax(Float.parseFloat(values.getString("Maximum", "")));
-			port.setCurrent(Float.parseFloat(values.getString("Default", "")));
+			if (port.getTypes().contains(Lv2PortType.InputPort.getType()))
+				port.setCurrent(Float.parseFloat(values.getString("Default", "")));
 		}
 
 		return port;
